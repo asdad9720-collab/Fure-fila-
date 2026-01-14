@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <script>
+  window.pixelId = "69251f2e83c0b0e4729553f9";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+    <script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status do Envio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .status-card {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Títulos e Textos */
+        h2 {
+            margin: 15px 0 10px;
+            color: #333;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        p {
+            color: #666;
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* --- Elementos Visuais --- */
+
+        /* 1. Loader (Giratório) */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e0e0e0;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* 2. Check (Sucesso) */
+        .success-icon {
+            display: none;
+            width: 60px;
+            height: 60px;
+            background: #28a745;
+            color: white;
+            border-radius: 50%;
+            font-size: 36px;
+            line-height: 60px;
+            margin: 0 auto 20px;
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        @keyframes popIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+
+        /* 3. Alerta de Fila (O Problema) */
+        .queue-alert {
+            display: none;
+            background-color: #fff4f4;
+            border: 2px dashed #dc3545;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 18px;
+            animation: fadeIn 0.5s;
+        }
+        
+        .queue-number {
+            font-size: 32px;
+            display: block;
+            margin: 10px 0;
+            color: #c82333;
+        }
+
+        /* 4. Botão de Ação (A Solução) */
+        .upsell-section {
+            display: none; /* Oculto até o final */
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+            color: white;
+            border: none;
+            padding: 18px 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            text-transform: uppercase;
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.5);
+        }
+
+        .price-tag {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .no-thanks {
+            display: block;
+            margin-top: 15px;
+            color: #999;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="status-card">
+        <div id="spinner" class="spinner"></div>
+        <div id="success-icon" class="success-icon">✓</div>
+
+        <h2 id="main-title">Verificando seu pedido...</h2>
+        <p id="sub-text">Conectando ao banco de dados.</p>
+
+        <div id="queue-container" class="queue-alert">
+            ⚠️ ALTA DEMANDA DETECTADA
+            <span class="queue-number">543 pessoas</span>
+            na sua frente aguardando envio.
+        </div>
+
+        <div id="upsell-container" class="upsell-section">
+            <p style="color: #333; font-weight: 600; margin-bottom: 15px;">
+                Não quer esperar semanas?
+            </p>
+            
+            <a href="https://seguro.fiinaliizeagora.shop/api/public/shopify?product=2190493621368&store=21904" class="cta-button">
+                Pular a Fila Agora <span class="price-tag">R$ 21,90</span>
+            </a>
+
+            <span class="no-thanks" onclick="alert('Tem certeza que deseja isso?')">
+                Não, prefiro aguardar o prazo normal.
+            </span>
+        </div>
+    </div>
+
+    <script>
+        // Elementos da tela
+        const title = document.getElementById('main-title');
+        const sub = document.getElementById('sub-text');
+        const spinner = document.getElementById('spinner');
+        const successIcon = document.getElementById('success-icon');
+        const queueContainer = document.getElementById('queue-container');
+        const upsellContainer = document.getElementById('upsell-container');
+
+        // --- SEQÜÊNCIA DO SCRIPT ---
+
+        // 1. Início: Verificando Pedido (Já começa rodando)
+        // Aguarda 2.5 segundos
+        setTimeout(() => {
+            
+            // 2. PEDIDO APROVADO (Momento de Vitória)
+            spinner.style.display = 'none';
+            successIcon.style.display = 'block';
+            title.innerText = "PEDIDO APROVADO!";
+            title.style.color = "#28a745";
+            sub.innerText = "Seu pagamento foi confirmado com sucesso.";
+
+            // Aguarda mais 2.5 segundos para a pessoa ler
+            setTimeout(() => {
+
+                // 3. VERIFICANDO DISPONIBILIDADE (Volta a tensão)
+                successIcon.style.display = 'none';
+                spinner.style.display = 'block'; // Volta o loader
+                title.innerText = "Verificando estoque...";
+                title.style.color = "#333";
+                sub.innerText = "Consultando disponibilidade no centro logístico.";
+
+                // Aguarda 3 segundos simulando busca
+                setTimeout(() => {
+
+                    // 4. O PROBLEMA (Fila Gigante)
+                    spinner.style.display = 'none';
+                    title.innerText = "Disponibilidade Crítica!";
+                    title.style.color = "#dc3545"; // Vermelho alerta
+                    sub.style.display = 'none'; // Esconde texto pequeno
+                    
+                    queueContainer.style.display = 'block'; // Mostra o box vermelho
+
+                    // Aguarda 1 segundo para o impacto da fila
+                    setTimeout(() => {
+                        
+                        // 5. A SOLUÇÃO (Upsell)
+                        upsellContainer.style.display = 'block';
+
+                    }, 1000);
+
+                }, 3500); // Tempo do spinner rodando
+
+            }, 2500); // Tempo exibindo o check verde
+
+        }, 2500); // Tempo inicial "Verificando pedido"
+
+    </script>
+</body>
+</html>
